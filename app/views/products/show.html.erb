@@ -5,6 +5,10 @@
     <%= @product.name %>
   </div>
   <div class="mb-2">
+    <span class="font-bold">Seller:</span>
+    <%= @product.user.email %>
+  </div>
+  <div class="mb-2">
     <span class="font-bold">Category:</span>
     <%= @product.category.name %>
   </div>
@@ -19,5 +23,9 @@
 </div>
 
 <div class="my-4 text-center">
-      <%= link_to "Products", products_path, class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+  <% if @product.user == current_user %>
+    <%= link_to "Edit Product", edit_product_path(@product), class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+    <%= link_to "Delete Product", product_path(@product), data: { "turbo-method": :delete, "turbo-confirm": "Are you Sure?" }, class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+  <% end %>
+  <%= link_to "Back to Products", products_path, class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
 </div>

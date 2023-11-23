@@ -35,8 +35,12 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    if @product.user == current_user
+      @product.destroy
+      redirect_to products_url, notice: 'Product was successfully deleted.'
+    else
+      redirect_to products_path, alert: 'You are not authorized to delete this product.'
+    end
   end
 
   private
