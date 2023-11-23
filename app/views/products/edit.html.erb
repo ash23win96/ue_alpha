@@ -1,0 +1,19 @@
+<h1>Edit product details </h1><br>
+
+<%= form_for @product do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <div class="mb-4">
+    <%= f.label :category%>
+    <%= f.collection_select :category_id, @categories, :id, :name, { prompt: "Select a category" }%>
+  </div>
+
+  <%= f.label :description %><br>
+  <%= f.text_area :description %><br>
+
+  <%= f.label :price %><br>
+  <%= f.number_field :price, step: 0.01 %><br>
+
+  <%= f.submit 'Create Product' %>
+<% end %>
