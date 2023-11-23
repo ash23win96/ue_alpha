@@ -1,0 +1,30 @@
+<div class="bg-gray-100 p-6 rounded-md shadow-md max-w-md mx-auto mt-8">
+  <h2 class="text-2xl font-bold mb-4">Category Details</h2>
+
+  <div class="mb-4">
+    <div class="mb-2">
+      <span class="block text-sm font-bold text-gray-700">Name:</span>
+      <p class="text-base text-gray-900"><%= @category.name %></p>
+    </div>
+
+    <div class="mb-2">
+      <span class="block text-sm font-bold text-gray-700">Description:</span>
+      <p class="text-base text-gray-900"><%= @category.description %></p>
+    </div>
+  </div>
+
+  <p class="mb-2"><strong>Products:</strong></p>
+    <ul class="list-disc ml-4">
+      <% @products.each do |product| %>
+        <li><%= link_to product.name, product, class: 'text-blue-500 hover:text-blue-700' %></li>
+      <% end %>
+    </ul>
+</div>
+
+<div class="my-4 text-center">
+  <% if @category.user == current_user %>
+    <%= link_to "Edit Category", edit_category_path(@category), class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+    <%= link_to "Delete Category", category_path(@category), data: { "turbo-method": :delete, "turbo-confirm": "Are you Sure?" }, class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+  <% end %>
+  <%= link_to "Back to Catogory Index", categories_path, class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" %>
+</div>
