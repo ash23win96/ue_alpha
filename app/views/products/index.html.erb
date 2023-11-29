@@ -8,6 +8,11 @@
           <%= link_to product_path(product) do %>
             <h2 class="text-xl font-bold mb-2"><%= product.name %></h2>
           <% end %>
+          <% if product && product.image? %>
+            <p class="text-gray-600 mb-2"><%= image_tag(product.image.url) %></p>
+          <% else %>
+            <p class="text-gray-600 mb-2"><%= image_tag("https://placehold.co/350x350") %></p>
+          <% end %>
           <p class="text-gray-600 mb-2"><%= product.category.name %></p>
           <p class="text-gray-700 mb-2"><%= truncate(product.description, length: 50, seperator: " " ) %></p>
           <p class="text-green-600 font-semibold"><%= number_to_currency(product.price) %></p>

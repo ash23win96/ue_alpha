@@ -1,6 +1,11 @@
 <div class="bg-gray-100 p-6 rounded-md shadow-md max-w-md mx-auto mt-8">
   <h2 class="text-2xl font-bold mb-2">Product Details</h2>
   <div class="mb-2">
+    <% if @product && @product.image? %>
+      <%= image_tag(@product.image.url) %>
+    <% end %>
+  </div>
+  <div class="mb-2">
     <span class="font-bold">Name:</span>
     <%= @product.name %>
   </div>
