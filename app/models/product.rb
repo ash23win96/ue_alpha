@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
   belongs_to :category
+  has_many :line_items
 
   validates :name, presence: true
   validates :description, length: { minimum: 10, maximum: 200 }
