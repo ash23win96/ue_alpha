@@ -1,19 +1,18 @@
 databases:
-  - name: postgres
-    ipAllowList: []
+  - name: ue_aplha
     databaseName: project
     user: developer
 
 services:
   - type: web
     name: ue_alpha
-    env: ruby
-    buildCommand: "./render-build.sh"
-    startCommand: "bundle exec rails s"
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: postgres
+          name: mysite
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
