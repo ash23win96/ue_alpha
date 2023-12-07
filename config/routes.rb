@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Avo::Engine, at: Avo.configuration.root_path
   get 'carts/show'
   devise_for :users
   root 'pages#index'
