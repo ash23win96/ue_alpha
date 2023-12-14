@@ -20,5 +20,5 @@ production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
   database: project_production
-  username: developer
+  username: <%= ENV["DATABASE_USERNAME"] %>
   password: <%= ENV["DATABASE_PASSWORD"] %>
