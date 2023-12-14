@@ -31,7 +31,7 @@ production:
   <<: *default
   # database: storage/production.sqlite3
   # database: project_production
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV["DATABASE_URL"] %>
   database: project_production
   username: developer
-  password: developer
+  password: <%= ENV["DATABASE_PASSWORD"] %>
