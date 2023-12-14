@@ -6,8 +6,8 @@ databases:
 services:
   - type: web
     name: ue_alpha
-    env: ruby
     plan: free
+    env: ruby
     buildCommand: "./render-build.sh"
     startCommand: "bundle exec rails s"
     envVars:
@@ -20,4 +20,6 @@ services:
 
   - type: redis
     name: redis
+    plan: free  
     ipAllowList: []
+    maxmemoryPolicy: noeviction
